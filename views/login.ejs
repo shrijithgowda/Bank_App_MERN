@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - MyBank</title>
+
+  <style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #e8f3ef, #f5f7f6);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* GLASS CARD */
+    .card {
+        width: 350px;
+        padding: 30px;
+        border-radius: 15px;
+
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    h2 {
+        color: #0b3d2e;
+        margin-bottom: 20px;
+    }
+
+    /* FLOATING INPUT */
+    .input-group {
+        position: relative;
+        margin: 20px 0;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 12px 10px;
+        border: none;
+        border-bottom: 2px solid #ccc;
+        outline: none;
+        background: transparent;
+        font-size: 15px;
+        transition: 0.3s;
+    }
+
+    .input-group label {
+        position: absolute;
+        left: 10px;
+        top: 12px;
+        color: #777;
+        font-size: 14px;
+        pointer-events: none;
+        transition: 0.3s;
+    }
+
+    /* FLOAT EFFECT */
+    .input-group input:focus ~ label,
+    .input-group input:valid ~ label {
+        top: -10px;
+        font-size: 12px;
+        color: #0b3d2e;
+    }
+
+    .input-group input:focus {
+        border-bottom: 2px solid #0b3d2e;
+    }
+
+    /* BUTTON */
+    button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+
+        background: linear-gradient(90deg, #0b3d2e, #145c43);
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        transform: scale(1.05);
+    }
+
+    /* LINK */
+    a {
+        display: block;
+        margin-top: 15px;
+        color: #0b3d2e;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    a:hover {
+        color: #145c43;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <h2>🏦 Welcome Back</h2>
+
+    <% if (typeof success !== 'undefined' && success.length > 0) { %>
+        <p style="color: green; font-weight: 500;"><%= success %></p>
+    <% } %>
+    <% if (typeof error !== 'undefined' && error.length > 0) { %>
+        <p style="color: red; font-weight: 500;"><%= error %></p>
+    <% } %>
+
+    <form method="POST" action="/login">
+
+        <div class="input-group">
+            <input type="email" name="email" required>
+            <label>Email</label>
+        </div>
+
+        <div class="input-group">
+            <input type="password" name="password" required>
+            <label>Password</label>
+        </div>
+
+        <button type="submit">Login</button>
+
+    </form>
+
+    <a href="/register">Don't have an account? Register</a>
+
+  </div>
+
+</body>
+</html>

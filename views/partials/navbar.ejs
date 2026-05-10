@@ -1,0 +1,99 @@
+<nav class="navbar">
+    <h2>🏦 MyBank</h2>
+
+    <div class="links">
+        <a href="/">Home</a>
+
+        <% if (user) { %>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/deposit">Deposit</a>
+            <a href="/withdraw">Withdraw</a>
+            <a href="/transfer">Transfer</a>
+            <a href="/logout">Logout</a>
+        <% } else { %>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        <% } %>
+    </div>
+</nav>
+
+<style>
+/* NAVBAR BASE */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+
+    /* GREEN + WHITE FINTECH GRADIENT */
+    background: linear-gradient(
+        90deg,
+        #0b3d2e 0%,
+        #ffffff 65%
+    );
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* LOGO */
+.navbar h2 {
+    margin: 0;
+    color: #0b3d2e;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* LINKS CONTAINER */
+.links {
+    display: flex;
+    gap: 15px;
+}
+
+/* LINKS STYLE */
+.links a {
+    text-decoration: none;
+    color: #0b3d2e;
+    font-weight: 500;
+    position: relative;
+    transition: 0.3s;
+    padding: 5px;
+}
+
+/* HOVER EFFECT */
+.links a:hover {
+    color: #145c43;
+    transform: translateY(-2px);
+}
+
+/* UNDERLINE ANIMATION */
+.links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 2px;
+    background: #0b3d2e;
+    transition: 0.3s;
+}
+
+.links a:hover::after {
+    width: 100%;
+}
+
+/* MOBILE RESPONSIVE (BASIC) */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .links {
+        flex-wrap: wrap;
+        margin-top: 10px;
+    }
+}
+</style>
